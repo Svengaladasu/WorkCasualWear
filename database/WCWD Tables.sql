@@ -1,8 +1,14 @@
+--USE master
+--GO
+
+--DROP DATABASE wcwd
+--GO
+
 --CREATE DATABASE wcwd
 --GO
 
---USE wcwd
---GO
+USE wcwd
+GO
 
 BEGIN TRAN
 
@@ -33,11 +39,24 @@ CREATE TABLE Category(
 )
 GO
 
+CREATE TABLE [Gender](
+	[GenderId] [int] IDENTITY(1,1) NOT NULL,
+	[Gender] [nvarchar](6) NULL,
+	[IsActive] [int] NULL,
+	[CreatedDateTime] [datetime] DEFAULT GETDATE(),
+	[CreatedBy] [int] DEFAULT -1,
+	[UpdatedDateTime] [datetime] DEFAULT GETDATE(),
+	[UpdatedBy] [int] DEFAULT -1,
+	CONSTRAINT PK_GenderId PRIMARY KEY ([GenderId] ASC)
+)
+
 CREATE TABLE [Item](
 	[ItemId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](255) NULL,
 	[ItemNumber] [nvarchar](50) NULL,
 	[Description] [ntext] NULL,
+	[ItemGenderId] [int] NULL,
+	[IsNewArrival] [int] NULL,	-- Mark to 0 after 90 days of marking as 1
 	[SmallImage] [nvarchar](255) NULL,
 	[LargeImage] [nvarchar](255) NULL,
 	[ShortDesc] [nvarchar](255) NULL,
@@ -73,7 +92,9 @@ CREATE TABLE [Item](
 	[CreatedBy] [int] DEFAULT -1,
 	[UpdatedDateTime] [datetime] DEFAULT GETDATE(),
 	[UpdatedBy] [int] DEFAULT -1,
-CONSTRAINT PK_ItemId PRIMARY KEY ([ItemId] ASC)
+CONSTRAINT PK_ItemId PRIMARY KEY ([ItemId] ASC),
+CONSTRAINT FK_Item_ItemGender_Gender FOREIGN KEY([ItemGenderId])
+REFERENCES [Gender]([GenderId])
 )
 GO
 
@@ -133,6 +154,7 @@ CREATE TABLE [Customer](
 	[FirstName] [nvarchar](50) NOT NULL,
 	[MiddleName] [nvarchar](50) NULL,
 	[LastName] [nvarchar](50) NULL,
+	[GenderId] [int] NULL,
 	[Company] [nvarchar](50) NULL,
 	[Street1] [nvarchar](50) NULL,
 	[Street2] [nvarchar](50) NULL,
@@ -157,7 +179,9 @@ CONSTRAINT PK_CustomerId PRIMARY KEY([CustomerId] ASC),
 CONSTRAINT FK_Customer_CountryId_Country FOREIGN KEY ([CountryId])
 REFERENCES Country([CountryId]),
 CONSTRAINT FK_Customer_StateId_State FOREIGN KEY ([StateId])
-REFERENCES [State]([StateId])
+REFERENCES [State]([StateId]),
+CONSTRAINT FK_Customer_GenderId_Gender FOREIGN KEY([GenderId])
+REFERENCES [Gender]([GenderId])
 )
 GO
 

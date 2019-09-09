@@ -1,31 +1,127 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
-
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img class="d-block w-100" src="~/Images/JM1211.jpg" alt="Los Angeles" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/softshell-front_Org.jpg" alt="Chicago" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/YJY-04 Tig.jpg" alt="New york" style="width:100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img class="d-block w-100" src="~/Images/JM1211.jpg" alt="Los Angeles" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/softshell-front_Org.jpg" alt="Chicago" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/YJY-04 Tig.jpg" alt="New york" style="width:100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img class="d-block w-100" src="~/Images/JM1211.jpg" alt="Los Angeles" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/softshell-front_Org.jpg" alt="Chicago" style="width:100%;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="height:300px;width:250px">
+                                <img src="~/Images/YJY-04 Tig.jpg" alt="New york" style="width:100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+    <div class="col-md-6">
+        <h2>Mens Clothing</h2>
         <p>
             ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
             enables a clean separation of concerns and gives you full control over markup
             for enjoyable, agile development.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
+    <div class="col-md-6">
+        <h2>Women Clothing</h2>
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+</div>
+<!--Discount Sale -->
+<div class="col-md-12">
+    <h2>Sale UPTO 50%</h2>
+    <p>
+        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+        enables a clean separation of concerns and gives you full control over markup
+        for enjoyable, agile development.
+    </p>
+    <p>@Html.ActionLink("Products", "Products", "Products")</p>
+</div>
+
+<!--Product Sale-->
+<div class="col-md-12">
+    <h2>Winter Products Sale</h2>
+    <p>
+        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+        enables a clean separation of concerns and gives you full control over markup
+        for enjoyable, agile development.
+    </p>
+    <p><a href="~/Views/Shared/_ProductLayout.cshtml">Shop Now</a></p>
+</div>
+
+<!--shop by brand -->
+<div>
+    @RenderPage("~/Views/Shared/_ShopByBrand.cshtml")
 </div>
